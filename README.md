@@ -1,6 +1,6 @@
 # How to Follow Along
 
-To start, create a **private** fork of this repository:
+To start, create a fork of this repository:
 
 [https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo)
 

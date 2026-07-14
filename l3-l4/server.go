@@ -1,6 +1,8 @@
 package main
 
 import (
+	"errors"
+	"fmt"
 	"log"
 	"net"
 	"net/http"
@@ -26,17 +28,25 @@ type ConnectGame int
 var gameBoard [][]int
 
 func (t *ConnectGame) Move(args *Move, reply *int) error {
+	if args.Col < 0 || args.Col >= 8 {
+		return errors.New("column out of bounds")
+	}
 
-	for i := range gameBoard {
-		if gameBoard[7-i][args.Col] == -1 {
-			gameBoard[7-i][args.Col] = args.Color
+	if gameBoard[len(gameBoard)-1][args.Col] != -1 {
+		return errors.New("column is full")
+	}
+
+	for row := len(gameBoard) - 1; row >= 0; row-- {
+		if gameBoard[row][args.Col] == -1 {
+			gameBoard[row][args.Col] = args.Color
+			break
 		}
 	}
 	return nil
 }
 
 func (t *ConnectGame) Get(args *int, reply *Board) error {
-	reply.BoardString = "Hello World"
+	reply.BoardString = fmt.Sprint(gameBoard)
 	return nil
 }
 

@@ -2,9 +2,8 @@
 
 You will be implementing a vector timestamp onto the following code.
 
-You will have a file `process.go` representing a single process.
-
-You will also be given a `runner.go` which runs the process.
+You will create a file `process.go` representing a single process who is implementing a vector clock.
+You will also eventually create a tester for this process code in a file `process_test.go`.
 
 # Process
 
@@ -53,6 +52,11 @@ Read about how go handles methods here:
 - https://gobyexample.com/methods
 
 
+> [!IMPORTANT]
+> Complete the implementation of the four vector timestamp functions, updating the fields of the process struct as needed.
+
+
+
 # Comparison
 
 We also want the ability to correctly compare two vector timestamps.
@@ -70,6 +74,9 @@ This function should return:
 - an int < 0 if ts1 < ts2
 - an int > 0 if ts1 > ts2
 - 0 if ts1 < > ts2 or ts1 == ts2.
+
+> [!IMPORTANT]
+> Complete the implementation of the Compare vector timestamp functions
 
 # Testing Code
 
@@ -177,6 +184,19 @@ func TestCompare2(t *testing.T) {
 }
 
 ```
+
+> [!IMPORTANT]
+> Complete the implementation of the `TestProcesses` function by correctly calling Start, Internal, Send, Receive to match the execution graph below.
+
+```
+p1: .   .   .        .
+         \          /
+p2:       .  .     /
+              \   /
+p3:  . .       . .
+```
+
+
 
 You may need to run `go mod init l7-l8` to set-up the go module file.
 
